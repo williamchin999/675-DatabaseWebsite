@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require('cors')
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -9,9 +10,9 @@ const port = process.env.PORT || 3001;
 //Input own password in a .env file
 const db = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "1234",
-  database: "csc675db",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB,
 });
 
 //connect
