@@ -26,7 +26,29 @@ db.connect((err) => {
 app.use(cors());
 app.use(express.json())
 
+app.post("/create", (req,res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const mobile = req.body.mobile;
+    const address = req.body.address;
+    const username = req.body.username;
+    const password = req.body.password;
+    const user_id = req.body.userId;
+
+    let sql = "INSERT INTO User (user_id,name,email,mobile,address,username,password) VALUES(?,?,?,?,?,?,?)"
+    db.query (sql,[user_id,name,email,mobile,address,username,password],(err,result) => {
+        if(err) throw err;
+        res.send("Values Inserted");
+    })
+})
 //Queries
+app.get('/users', (req,res) => {
+    let sql = "SELECT * FROM user";
+    db.query(sql,(err,result) => {
+        if (err) throw err;
+        res.send(result);
+    })
+})
 app.get("/query1", (req, res) => {
     console.log("Group by & Having Queries")
     let userIssueBooks = `select count(*)
