@@ -58,10 +58,7 @@ app.get("/query1", (req, res) => {
     db.query(userIssueBooks, (err, result) => {
         if (err) throw err;
         let text = "Finding number of users who issued a book with book id 1";
-        res.json({
-            Query: text,
-            result: result
-        })
+        res.send(result);
     });
 });
 app.get("/query2", (req, res) => {
@@ -74,10 +71,7 @@ app.get("/query2", (req, res) => {
     db.query(nameOfBookBorrowed, (err, result) => {
         if (err) throw err;
         let text = "Finding the name of books borrowed exactly once";
-        res.json({
-            Query: text,
-            result: result
-        })
+        res.send(result);
     });
 
 });
@@ -92,10 +86,7 @@ app.get("/query3", (req, res) => {
     db.query(bookTitlesOnShelf2, (err, result) => {
         if (err) throw err;
         let text = "1.Names of book titles on shelf 2";
-        res.json({
-            Query: text,
-            result: result
-        })
+        res.send(result);
     });
 });
 app.get("/query4", (req, res) => {
@@ -159,10 +150,7 @@ app.get("/query8", (req, res) => {
     db.query(listOfUsersWhoHaventBorrowedBooks, (err, result) => {
         if (err) throw err;
         let text = "6. Find the user list which have not borrowed any book till date";
-        res.json({
-            Query: text,
-            result: result
-        })
+        res.send(result);
     });
 });
 app.get("/query9", (req, res) => {
